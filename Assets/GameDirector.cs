@@ -91,11 +91,16 @@ public class GameDirector : MonoBehaviour
         //残り1人
         if(plaerCount <= 1)
         {
-            //残ったプレイヤーのIDを取得
-            winner = GameObject.FindWithTag("Player").GetComponent<PlayerController>().ID;
-
-            //リザルトシーンへ
-            SceneManager.LoadScene("ResultScene");
+            Invoke("ToResult", 0.5f);
         }
+    }
+
+    void ToResult()
+    {
+        //残ったプレイヤーのIDを取得
+        winner = GameObject.FindWithTag("Player").GetComponent<PlayerController>().ID;
+
+        //リザルトシーンへ
+        SceneManager.LoadScene("ResultScene");
     }
 }

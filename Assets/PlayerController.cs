@@ -405,13 +405,17 @@ public class PlayerController : MonoBehaviour
         //ビーム
         else if (other.CompareTag("Beam"))
         {
+            //削除
+            Destroy(gameObject);
+
             //ゲームディレクターに死んだこと伝える（残り人数を調べるため）
             GameObject.Find("GameDirector").GetComponent<GameDirector>().Death();
 
-            //削除
-            Destroy(gameObject);
         }
     }
+
+
+
 
 
 

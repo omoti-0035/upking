@@ -1,28 +1,28 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 /// <summary>
-/// ÄÌ¾ïÃÆ
+/// é€šå¸¸å¼¾
 /// </summary>
 public class Bullet : MonoBehaviour
 {
-    //ÃÆ¤ÎÂ®ÅÙ¡ÊUnityÂ¦¤ÇÄ´À°¤·¤Æ
+    //å¼¾ã®é€Ÿåº¦ï¼ˆUnityå´ã§èª¿æ•´ã—ã¦
     public float speed = 5f;
 
-    //¸ş¤­¡Ê¿Ê¹ÔÊı¸ş¡Ë
+    //å‘ãï¼ˆé€²è¡Œæ–¹å‘ï¼‰
     public int direction = 1; // 1: right, -1: left
 
 
 
- /// <summary>
-    /// Ëè¥Õ¥ì¡¼¥à
+    /// <summary>
+    /// æ¯ãƒ•ãƒ¬ãƒ¼ãƒ 
     /// </summary>
     void Update()
     {
-        //°ÜÆ°
+        //ç§»å‹•
         transform.Translate(Vector3.right * speed * direction * Time.deltaTime);
 
 
-        //²èÌÌ³°¤Ø¹Ô¤Ã¤¿¤éºï½ü
+        //ç”»é¢å¤–ã¸è¡Œã£ãŸã‚‰å‰Šé™¤
         if (transform.position.x > 10 || transform.position.x < -10)
         {
             Destroy(gameObject);
@@ -30,19 +30,19 @@ public class Bullet : MonoBehaviour
     }
 
 
- /// <summary>
-    /// ²¿¤«¤ËÅö¤¿¤Ã¤¿
+    /// <summary>
+    /// ä½•ã‹ã«å½“ãŸã£ãŸ
     /// </summary>
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
-        //¥Ï¥·¥´¤ËÅö¤¿¤Ã¤¿
+        //ãƒã‚·ã‚´ã«å½“ãŸã£ãŸ
         if (other.CompareTag("Ladder") || other.CompareTag("LadderRoot"))
         {
-            //¥Ï¥·¥´¤Ë¥À¥á¡¼¥¸Í¿¤¨¤ë
+            //ãƒã‚·ã‚´ã«ãƒ€ãƒ¡ãƒ¼ã‚¸ä¸ãˆã‚‹
             other.GetComponent<Ladder>().Damage();
 
-            //ÃÆ¤òºï½ü
+            //å¼¾ã‚’å‰Šé™¤
             Destroy(gameObject);
         }
     }
