@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
     GameObject ladderRootObject = null; //今触れてるハシゴの根元
 
 
-    bool isKing = false;    //王様になったかフラグ
+    public bool isKing = false;    //王様になったかフラグ
 
     float isMove = 0;       //移動できるまでの残り時間
 
@@ -430,6 +430,7 @@ public class PlayerController : MonoBehaviour
 
             //王様ターンへ移行
             GameObject.Find("GameDirector").GetComponent<GameDirector>().ChangeState();
+            GameObject.Find("GameDirector").GetComponent<GameDirector>().king = this.gameObject;
         }
 
 

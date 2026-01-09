@@ -14,7 +14,7 @@ public class ResultScene : MonoBehaviour
     void Start()
     {
         //「○Ｐ　ＷＩＮ！！」
-        winnerText.text = "" + GameObject.Find("GameDirector").GetComponent<GameDirector>().winner + "P WIN!";
+        winnerText.text = "" + GameObject.Find("GameDirector").GetComponent<GameDirector>().winner + "WIN!";
     }
 
 

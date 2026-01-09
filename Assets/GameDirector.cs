@@ -19,7 +19,9 @@ public class GameDirector : MonoBehaviour
     public TextMeshProUGUI timeText;
 
     //勝者ＩＤ
-    public int winner = -1;
+    public string winner = "";
+
+    public GameObject king;
 
 
     /// <summary>
@@ -64,6 +66,16 @@ public class GameDirector : MonoBehaviour
             {
                 //王冠を消す
                 Destroy(GameObject.FindWithTag("Crown"));
+            }
+
+            //王様ターン
+            else
+            {
+                //王様を消す
+                Destroy(king);
+
+                //ゲーム終了へ
+                Invoke("ToResult", 0.5f);
             }
         }
     }
@@ -129,8 +141,17 @@ public class GameDirector : MonoBehaviour
 
     void ToResult()
     {
-        //残ったプレイヤーのIDを取得
-        winner = GameObject.FindWithTag("Player").GetComponent<PlayerController>().ID;
+        winner = "";
+
+        // "Player"タグがついた全オブジェクトを配列として取得
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        // foreach文で一つずつ取り出して処理を行う
+        foreach (GameObject player in players)
+        {
+            winner += "P" + player.GetComponent<PlayerController>().ID + " ";
+        }
+
 
         //リザルトシーンへ
         SceneManager.LoadScene("ResultScene");
