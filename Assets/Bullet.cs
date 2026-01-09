@@ -11,7 +11,8 @@ public class Bullet : MonoBehaviour
     //向き（進行方向）
     public int direction = 1; // 1: right, -1: left
 
-
+    // 弾を撃ったプレイヤーのID
+    public int ownerID; 
 
     /// <summary>
     /// 毎フレーム
@@ -45,5 +46,15 @@ public class Bullet : MonoBehaviour
             //弾を削除
             Destroy(gameObject);
         }
+
+        //プレイヤーに当たった
+        if (other.CompareTag("Player"))
+        {
+
+            //弾を削除
+            Destroy(gameObject);
+        }
+
+
     }
 }

@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     public float maxcooltime = 1.5f;    //プレイヤーの弾クールタイム
     float currentCooldown = 0f;         //クールタイム
     bool canFire = true;
-    public float maxladder = 3;
+    public int maxladder = 3;
 
     //各プレファブ
     public GameObject ladderPrefab; //ハシゴ
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity;
     private bool isGrounded;    //地面に振れてるかフラグ
     bool isClimbing = false;    //ハシゴ上り下り中フラグ
-    int ladderCount = 0;        //触れてるハシゴの数
+    int ladderCount = 0;        //持ってるハシゴの数
     int direction = 1;          //向き（右：+1／左：-1）
 
     bool isLadderRoot = false;  //ハシゴの根元に触れてるかフラグ
@@ -161,8 +161,12 @@ public class PlayerController : MonoBehaviour
                 GameObject bullet = Instantiate(bulletPrefab, transform.position + Vector3.right * direction * 0.3f, Quaternion.identity);
                 if (cooldownGauge != null)
                 cooldownGauge.fillAmount = 0f;
+
                 //弾の向きをプレイヤーに合わせる
                 bullet.GetComponent<Bullet>().direction = direction;
+
+                //弾を撃ったプレイヤーのIDを設定
+                bullet.GetComponent<Bullet>().ownerID = ID;
             }
         }
     }
@@ -375,7 +379,7 @@ public class PlayerController : MonoBehaviour
         else if (other.CompareTag("LadderItem"))
         {
             //プレイヤーの梯子の数が3以下なら回収
-            if (ladderCount <= 2)
+            if (ladderCount < maxladder)
             {
             //手持ちをカウントアップ
             ladderCount++;
@@ -433,6 +437,40 @@ public class PlayerController : MonoBehaviour
             {
                 isLadderRoot = false;
             }
+        }
+    }
+
+    /// <summary>
+    /// ハシゴを失う
+    /// </summary>
+    /// <returns>梯子を持っていたか</returns>
+    public bool LoseLadder()
+    {
+        //持ってるハシゴがある
+        if (ladderCount > 0)
+        {
+            ladderCount--;
+            UpdateText();
+            return true;
+        }
+
+        //持ってるハシゴがない
+        else
+        {
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// 攻撃が当たってハシゴを得る
+    /// </summary>
+    public void ObtainingLadder()
+    {
+        ladderCount++;
+
+        if(ladderCount > maxladder)
+        {
+            ladderCount = (int)maxladder;
         }
     }
 }
