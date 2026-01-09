@@ -206,9 +206,6 @@ public class PlayerController : MonoBehaviour
         //設置ボタン押した＆＆地面を歩いてる
         if (Input.GetButtonDown("Setup" + ID) && ladderCount > 0 && isGrounded)
         {
-            //手持ちハシゴ減らす
-            ladderCount--;
-            UpdateText();
 
             //ハシゴを生成
             GameObject ladder = Instantiate(ladderPrefab);
@@ -216,14 +213,33 @@ public class PlayerController : MonoBehaviour
             //既存のハシゴの根元に触れてる
             if (isLadderRoot)
             {
+
                 //今作ったハシゴの親を、既存のハシゴにする
                 GameObject parent = ladderRootObject;
+
+                int nest = 0;   
 
                 //すでに既存のハシゴに子がいたら、孫にする（繰り返す）
                 while (parent.transform.childCount > 1)
                 {
                     parent = parent.transform.GetChild(1).gameObject;
+                    nest++;
                 }
+
+                //もう梯子3段以上
+                if (nest > 2)
+                {
+                    Destroy(ladder);
+                    return;
+                }
+
+                //手持ちハシゴ減らす
+                ladderCount--;
+                UpdateText();
+
+
+
+
                 ladder.transform.parent = parent.transform;
                 ladder.transform.localPosition = new Vector3(0, 1, 0);
             }
