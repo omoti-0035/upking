@@ -81,6 +81,38 @@ public class GameDirector : MonoBehaviour
 
 
     /// <summary>
+    /// ハシゴの受け渡し
+    /// </summary>
+    /// <param name="attacker">攻撃した側のID</param>
+    /// <param name="receiver">食らった側のID</param>
+    public void LadderTransfer(int attacker, GameObject receiver)
+    {
+        //攻撃されたキャラからハシゴを減らす
+        bool haveLadder = receiver.GetComponent<PlayerController>().LoseLadder();
+
+        //攻撃されたキャラがハシゴを持っていたら
+        if(haveLadder)
+        {
+            //タグが "Player" のオブジェクトをすべて取得
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+            //取得したリストをループで回してIDをチェック
+            foreach (GameObject playerObj in players)
+            {
+                PlayerController pc = playerObj.GetComponent<PlayerController>();
+                if (pc != null && pc.ID == attacker)
+                {
+                    // 条件に一致するオブジェクトを見つけた！
+                    pc.GetComponent<PlayerController>().ObtainingLadder();
+
+                    break; // 見つかったのでループを抜ける
+                }
+            }
+        }
+    }
+
+
+    /// <summary>
     /// 誰か死んだ（ビームに当たったプレイヤーから呼ばれる）
     /// </summary>
     public void Death()
