@@ -47,6 +47,7 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
 
+
         //プレイヤーに当たった
         if (other.CompareTag("Player"))
         {

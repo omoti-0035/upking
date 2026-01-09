@@ -53,6 +53,9 @@ public class PlayerController : MonoBehaviour
 
     float isMove = 0;       //移動できるまでの残り時間
 
+    //攻撃を受けてスタンしてる時間
+    float stanTime = 0;
+
 
 
     //触れてるハシゴの一覧
@@ -84,6 +87,13 @@ public class PlayerController : MonoBehaviour
         //動けるようになるまでの時間を減らす
         isMove -= Time.deltaTime;
         if (isMove > 0) //まだ残ってるなら操作不能
+        {
+            return;
+        }
+
+
+        stanTime -= Time.deltaTime;
+        if (stanTime > 0) //まだスタン中なら操作不能
         {
             return;
         }
@@ -447,6 +457,9 @@ public class PlayerController : MonoBehaviour
     /// <returns>梯子を持っていたか</returns>
     public bool LoseLadder()
     {
+        stanTime = 1.5f; //1.5秒スタン
+
+
         //持ってるハシゴがある
         if (ladderCount > 0)
         {
