@@ -1085,7 +1085,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeText: {fileID: 1643032612}
-  winner: -1
+  winner: 
+  king: {fileID: 0}
 --- !u!4 &221887348
 Transform:
   m_ObjectHideFlags: 0
@@ -4550,7 +4551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4947024397200318632, guid: 0dc2ceb199b1e38408b79ec5df334b6c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.98
+      value: 1.07
       objectReference: {fileID: 0}
     - target: {fileID: 4947024397200318632, guid: 0dc2ceb199b1e38408b79ec5df334b6c, type: 3}
       propertyPath: m_LocalPosition.z
