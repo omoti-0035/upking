@@ -141,9 +141,9 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Fire" + ID) && canFire)
         {
 
-        canFire = false;
-        StartCoroutine(FireCooldown());
-        currentCooldown = 0f;
+            canFire = false;
+            StartCoroutine(FireCooldown());
+            currentCooldown = 0f;
 
             //王様の時
             if (isKing)
@@ -158,7 +158,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 //通常弾生成
-                GameObject bullet = Instantiate(bulletPrefab, transform.position + Vector3.right * direction * 0.3f, Quaternion.identity);
+                GameObject bullet = Instantiate(bulletPrefab, transform.position + Vector3.right * direction * 0.8f, Quaternion.identity);
                 if (cooldownGauge != null)
                 cooldownGauge.fillAmount = 0f;
 

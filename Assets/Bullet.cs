@@ -53,6 +53,11 @@ public class Bullet : MonoBehaviour
 
             //弾を削除
             Destroy(gameObject);
+
+
+            GameObject.Find("GameDirector").GetComponent<GameDirector>().LadderTransfer(ownerID, other.gameObject);
+
+
         }
 
 
