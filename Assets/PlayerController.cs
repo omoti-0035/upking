@@ -501,6 +501,8 @@ public class PlayerController : MonoBehaviour
         if(ladderCount > maxladder)
         {
             ladderCount = (int)maxladder;
+
         }
+        UpdateText();
     }
 }
