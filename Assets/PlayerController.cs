@@ -254,6 +254,10 @@ public class PlayerController : MonoBehaviour
 
                 //そのハシゴを（根本）にする
                 ladder.tag = "LadderRoot";
+
+                ladderCount--;
+                UpdateText();
+                Debug.Log(ID + "梯子の数:" + ladderCount);
             }
         }
     }
