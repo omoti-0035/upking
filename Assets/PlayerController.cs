@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 {
     //Unity側でPlayerのプレハブを選んで調整して
     [Header("Movement")]
-    public float walkSpeed = 3.0f;      //歩く速度
+    public float walkSpeed = 6.0f;      //歩く速度
     public float dashSpeed = 6.0f;      //ダッシュ時の速度
     public float ladderSpeed = 3.0f;    //ハシゴを上り下りする時の速度
     public float jumpHeight = 1.0f;     //ジャンプ力
@@ -148,10 +148,10 @@ public class PlayerController : MonoBehaviour
             //王様の時
             if (isKing)
             {
-                //1秒後にビーム発射メソッドを呼ぶ
-                Invoke("Beam", 1.0f);
-                //ビームを撃ったら３秒間は行動不能
-                isMove = 3.0f;
+                //1秒後にビーム発射メソッドを呼ぶ(0.5秒に変更)
+                Invoke("Beam", 0.5f);
+                //ビームを撃ったら0.5秒間は行動不能
+                isMove = 0.5f;
             }
 
             //ふつうのプレイヤー
@@ -396,6 +396,7 @@ public class PlayerController : MonoBehaviour
             other.transform.parent = transform;
             other.transform.localPosition = new Vector3(0, 1.0f, 0);
             isKing = true;
+            walkSpeed = 10f;
 
             //王様ターンへ移行
             GameObject.Find("GameDirector").GetComponent<GameDirector>().ChangeState();

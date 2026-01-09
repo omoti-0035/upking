@@ -10,7 +10,7 @@ using UnityEngine;
 public class GameDirector : MonoBehaviour
 {
     //残り時間（秒）
-    float timeLeft = 180f;
+    float timeLeft = 90f;
 
     //生き残ってるプレイヤーの数
     int plaerCount = 0;
@@ -74,8 +74,8 @@ public class GameDirector : MonoBehaviour
     /// </summary>
     public void ChangeState()
     {
-        //残り時間は120秒
-        timeLeft = 120;
+        //残り時間は30秒
+        timeLeft = 30;
         state = GameState.KING;
     }
 
