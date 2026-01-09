@@ -457,7 +457,7 @@ public class PlayerController : MonoBehaviour
     /// <returns>梯子を持っていたか</returns>
     public bool LoseLadder()
     {
-        stanTime = 1.5f; //1.5秒スタン
+        stanTime = 1.0f; //1.5秒スタン
 
 
         //持ってるハシゴがある
