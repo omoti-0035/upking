@@ -227,15 +227,16 @@ public class PlayerController : MonoBehaviour
                 }
 
                 //もう梯子3段以上
-                if (nest > 1)
+                /*if (nest > 1)
                 {
                     Destroy(ladder);
                     return;
-                }
+                }*/
 
                 //手持ちハシゴ減らす
                 ladderCount--;
                 UpdateText();
+                Debug.Log(ID + "梯子の数:" + ladderCount);
 
 
 
@@ -411,10 +412,10 @@ public class PlayerController : MonoBehaviour
             ladderCount++;
             UpdateText();
 
-            Debug.Log("今の梯子の数は+(ladderCount)");
+                Debug.Log(ID + "梯子の数:" + ladderCount);
 
-            //アイテムを消す
-            Destroy(other.gameObject);
+                //アイテムを消す
+                Destroy(other.gameObject);
             }
         }
 
