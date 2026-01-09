@@ -227,7 +227,7 @@ public class PlayerController : MonoBehaviour
                 }
 
                 //もう梯子3段以上
-                if (nest > 2)
+                if (nest > 1)
                 {
                     Destroy(ladder);
                     return;
