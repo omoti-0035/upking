@@ -2,7 +2,8 @@ using System.Data;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine;
-
+//using Microsoft.Unity.VisualStudio.Editor;
+using UnityEngine.UI;
 
 /// <summary>
 /// ゲーム全体の処理（リザルトシーンに行っても消えない）
@@ -10,7 +11,7 @@ using UnityEngine;
 public class GameDirector : MonoBehaviour
 {
     //残り時間（秒）
-    float timeLeft = 10f;
+    float timeLeft = 90f;
 
     //生き残ってるプレイヤーの数
     int plaerCount = 0;
@@ -23,7 +24,9 @@ public class GameDirector : MonoBehaviour
 
     public GameObject king;
 
-      public GameObject[] players; // シーンにいるプレイヤー（4人分）
+    public GameObject[] players; // シーンにいるプレイヤー（4人分）
+    public Image Phaikei;
+    public Image PGauge;
 
 
     /// <summary>
@@ -53,6 +56,8 @@ public class GameDirector : MonoBehaviour
         for (int i = count; i < players.Length; i++)
         {
             Destroy(players[i]);
+            Phaikei.gameObject.SetActive(false);
+            PGauge.gameObject.SetActive(false);
         }
     }
 
