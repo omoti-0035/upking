@@ -10,7 +10,7 @@ using UnityEngine;
 public class GameDirector : MonoBehaviour
 {
     //残り時間（秒）
-    float timeLeft = 90f;
+    float timeLeft = 10f;
 
     //生き残ってるプレイヤーの数
     int plaerCount = 0;
@@ -72,7 +72,10 @@ public class GameDirector : MonoBehaviour
             else
             {
                 //王様を消す
-                Destroy(king);
+                //Destroy(king);
+                
+                //プレイヤーを消す
+                DestroyPlayers();
 
                 //ゲーム終了へ
                 Invoke("ToResult", 0.5f);
@@ -156,4 +159,19 @@ public class GameDirector : MonoBehaviour
         //リザルトシーンへ
         SceneManager.LoadScene("ResultScene");
     }
+void DestroyPlayers()
+{
+    GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+    foreach (GameObject p in players)
+    {
+        PlayerController pc = p.GetComponent<PlayerController>();
+
+        if (pc != null && pc.isKing == false)
+        {
+            Destroy(p);
+        }
+    }
 }
+}
+
