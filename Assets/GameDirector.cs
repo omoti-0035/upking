@@ -23,6 +23,8 @@ public class GameDirector : MonoBehaviour
 
     public GameObject king;
 
+      public GameObject[] players; // シーンにいるプレイヤー（4人分）
+
 
     /// <summary>
     /// ゲームの状態
@@ -45,6 +47,13 @@ public class GameDirector : MonoBehaviour
 
         //プレイヤーの数をカウント
         plaerCount = GameObject.FindGameObjectsWithTag("Player").Length;
+
+        int count = GameManager.Instance.playerCount;
+
+        for (int i = count; i < players.Length; i++)
+        {
+            Destroy(players[i]);
+        }
     }
 
     /// <summary>

@@ -357,6 +357,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &46140612 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 741843255295678962, guid: 0dc2ceb199b1e38408b79ec5df334b6c, type: 3}
+  m_PrefabInstance: {fileID: 1937387099}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &55863162
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,6 +1092,11 @@ MonoBehaviour:
   timeText: {fileID: 1643032612}
   winner: 
   king: {fileID: 0}
+  players:
+  - {fileID: 242161635}
+  - {fileID: 1194344537}
+  - {fileID: 256916127}
+  - {fileID: 46140612}
 --- !u!4 &221887348
 Transform:
   m_ObjectHideFlags: 0
@@ -1177,6 +1187,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 234444547}
   m_CullTransparentMesh: 1
+--- !u!1 &242161635 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 741843255295678962, guid: 0dc2ceb199b1e38408b79ec5df334b6c, type: 3}
+  m_PrefabInstance: {fileID: 7878739775263022403}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &256916127 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 741843255295678962, guid: 0dc2ceb199b1e38408b79ec5df334b6c, type: 3}
+  m_PrefabInstance: {fileID: 65303345}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2818,6 +2838,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143991650}
   m_CullTransparentMesh: 1
+--- !u!1 &1194344537 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 741843255295678962, guid: 0dc2ceb199b1e38408b79ec5df334b6c, type: 3}
+  m_PrefabInstance: {fileID: 811843091}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1276708995
 GameObject:
   m_ObjectHideFlags: 0
