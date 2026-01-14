@@ -59,6 +59,8 @@ public class GameDirector : MonoBehaviour
             Phaikei.gameObject.SetActive(false);
             PGauge.gameObject.SetActive(false);
         }
+        // ★ Destroy後に正しい人数を入れる
+        plaerCount = count;
     }
 
     /// <summary>
