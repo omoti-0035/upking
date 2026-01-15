@@ -137,6 +137,7 @@ public class PlayerController : MonoBehaviour
         Fire();
 
         //アニメーション更新
+<<<<<<< HEAD
         //UpdateAnimation();
     }
 
@@ -144,6 +145,15 @@ public class PlayerController : MonoBehaviour
     //{
        // animator.Play("Idle");
     //}
+=======
+      //  UpdateAnimation();
+    }
+
+    /*private void UpdateAnimation()
+    {
+        animator.Play("Idle");
+    }*/
+>>>>>>> 40c746916ce905547f307b8577c7d905c6fe1cc6
 
     //テキスト更新
     void UpdateText()
