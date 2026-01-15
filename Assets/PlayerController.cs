@@ -137,13 +137,13 @@ public class PlayerController : MonoBehaviour
         Fire();
 
         //アニメーション更新
-        UpdateAnimation();
+      //  UpdateAnimation();
     }
 
-    private void UpdateAnimation()
+    /*private void UpdateAnimation()
     {
         animator.Play("Idle");
-    }
+    }*/
 
     //テキスト更新
     void UpdateText()

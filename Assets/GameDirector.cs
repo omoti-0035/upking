@@ -191,5 +191,13 @@ void DestroyPlayers()
         }
     }
 }
+   /* public void ResetGame()
+    {
+        timeLeft = 90f;
+        state = GameState.TAKE;
+        winner = "";
+
+        plaerCount = GameObject.FindGameObjectsWithTag("Player").Length;
+    }*/
 }
 

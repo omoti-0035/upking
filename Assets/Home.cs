@@ -8,5 +8,6 @@ public class Home : MonoBehaviour
     {
         seSource.Play();
         SceneManager.LoadScene("Stert");
+        Destroy(GameObject.Find("GameDirector"));
     }
 }
