@@ -68,9 +68,11 @@ public class GameDirector : MonoBehaviour
     /// </summary>
     void Update()
     {
-        //残り時間表示
-        timeText.text = "" + (int)timeLeft / 60 + ":" + (int)timeLeft % 60;
-
+        if (timeText != null)
+        {
+            //残り時間表示
+            timeText.text = "" + (int)timeLeft / 60 + ":" + (int)timeLeft % 60;
+        }
         //残り時間を減らす
         timeLeft -= Time.deltaTime;
 
