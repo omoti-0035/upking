@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 
 /// <summary>
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
     //以下は触らない
     private CharacterController controller;
     private Vector3 velocity;
+    private Animator animator;　// アニメーション
     private bool isGrounded;    //地面に振れてるかフラグ
     bool isClimbing = false;    //ハシゴ上り下り中フラグ
     int ladderCount = 0;        //持ってるハシゴの数
@@ -72,7 +74,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-            if (cooldownGauge != null)
+        animator = GetComponent<Animator>();   //Animator取得
+        if (cooldownGauge != null)
             cooldownGauge.fillAmount = 1f;
     }
 
@@ -132,6 +135,13 @@ public class PlayerController : MonoBehaviour
         //攻撃
         Fire();
 
+        //アニメーション更新
+        UpdateAnimation();
+    }
+
+    private void UpdateAnimation()
+    {
+        animator.Play("Idle");
     }
 
     //テキスト更新
@@ -140,7 +150,21 @@ public class PlayerController : MonoBehaviour
       PladdersText.text = ladderCount.ToString();  
     }
 
+    void UpdateAnimation(float moveX)
+    {
+        if (animator == null) return;
 
+        animator.SetFloat("Speed", Mathf.Abs(moveX));
+        animator.SetBool("IsGrounded", isGrounded);
+        animator.SetBool("IsClimbing", isClimbing);
+
+        // 向き変更（モデル反転）
+        if (moveX != 0)
+        {
+            direction = moveX > 0 ? 1 : -1;
+            transform.localScale = new Vector3(direction, 1, 1);
+        }
+    }
 
     /// <summary>
     /// 攻撃処理
@@ -154,6 +178,9 @@ public class PlayerController : MonoBehaviour
             canFire = false;
             StartCoroutine(FireCooldown());
             currentCooldown = 0f;
+
+            //if (animator != null)
+                //animator.SetTrigger("Fire");   //攻撃アニメ
 
             //王様の時
             if (isKing)
@@ -298,6 +325,9 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump" + ID) && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
+
+            //if (animator != null)
+                //animator.SetTrigger("Jump");   //ジャンプアニメ
         }
 
 

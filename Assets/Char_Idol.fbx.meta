@@ -22,7 +22,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -31,18 +31,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idol
+      name: Idle
       takeName: Take 001
       internalID: 1827226128182048838
       firstFrame: 0
-      lastFrame: 160
+      lastFrame: 80
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -109,7 +109,102 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: Char_Idol(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: oo1_0001:oo1:pCube9
+      parentName: Char_Idol(Clone)
+      position: {x: -0, y: 37.18297, z: -0.14207757}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: oo1_0001:oo1:joint19
+      parentName: Char_Idol(Clone)
+      position: {x: 0, y: 0.41420025, z: 0}
+      rotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+      scale: {x: 0.010000001, y: 0.010000001, z: 0.01}
+    - name: oo1_0001:oo1:joint2
+      parentName: oo1_0001:oo1:joint19
+      position: {x: -11, y: 0, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000004, y: 1.0000004, z: 1}
+    - name: oo1_0001:oo1:joint3
+      parentName: oo1_0001:oo1:joint2
+      position: {x: -20, y: 0, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: oo1_0001:oo1:joint17
+      parentName: oo1_0001:oo1:joint3
+      position: {x: -4, y: 0, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1}
+    - name: oo1_0001:oo1:joint18
+      parentName: oo1_0001:oo1:joint17
+      position: {x: -16, y: 0, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: oo1_0001:oo1:joint5
+      parentName: oo1_0001:oo1:joint3
+      position: {x: -0, y: -7, z: 0}
+      rotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+      scale: {x: 0.99999964, y: 0.9999998, z: 1.0000005}
+    - name: oo1_0001:oo1:joint6
+      parentName: oo1_0001:oo1:joint5
+      position: {x: -18, y: 0, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1.0000002, z: 1.0000001}
+    - name: oo1_0001:oo1:joint7
+      parentName: oo1_0001:oo1:joint6
+      position: {x: -21, y: 0, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1.0000002}
+    - name: oo1_0001:oo1:joint8
+      parentName: oo1_0001:oo1:joint3
+      position: {x: -0, y: 7, z: 0}
+      rotation: {x: -0.7071068, y: 0.7071068, z: -4.3297806e-17, w: 4.3297806e-17}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1.0000004}
+    - name: oo1_0001:oo1:joint9
+      parentName: oo1_0001:oo1:joint8
+      position: {x: -18, y: 0, z: -2.2043643e-15}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000004, y: 1.0000002, z: 1.0000007}
+    - name: oo1_0001:oo1:joint10
+      parentName: oo1_0001:oo1:joint9
+      position: {x: -21, y: 0, z: -2.5717583e-15}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000004, y: 1.0000002, z: 1.0000004}
+    - name: oo1_0001:oo1:joint14
+      parentName: oo1_0001:oo1:joint19
+      position: {x: 3, y: -9, z: 0}
+      rotation: {x: -0, y: -0.7071068, z: 0.7071068, w: 0}
+      scale: {x: 1.0000004, y: 1.0000002, z: 1.0000004}
+    - name: oo1_0001:oo1:joint15
+      parentName: oo1_0001:oo1:joint14
+      position: {x: -18, y: 4.4087286e-15, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: oo1_0001:oo1:joint16
+      parentName: oo1_0001:oo1:joint15
+      position: {x: -16, y: 0, z: 1.7763568e-15}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 0.9999999, y: 1, z: 1}
+    - name: oo1_0001:oo1:joint11
+      parentName: oo1_0001:oo1:joint19
+      position: {x: 3, y: 9, z: 0}
+      rotation: {x: -0, y: 0.7071068, z: 0.7071068, w: 0}
+      scale: {x: 1.0000004, y: 1.0000002, z: 1.0000004}
+    - name: oo1_0001:oo1:joint12
+      parentName: oo1_0001:oo1:joint11
+      position: {x: -18, y: 0, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: oo1_0001:oo1:joint13
+      parentName: oo1_0001:oo1:joint12
+      position: {x: -16, y: 0, z: -1.7763568e-15}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 0.9999999, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -120,13 +215,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
