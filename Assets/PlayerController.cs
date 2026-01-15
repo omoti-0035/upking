@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     //以下は触らない
     private CharacterController controller;
     private Vector3 velocity;
-    private Transform modelTransform;
+    [SerializeField] private Transform modelTransform;
     private Animator animator;　// アニメーション
     private bool isGrounded;    //地面に振れてるかフラグ
     bool isClimbing = false;    //ハシゴ上り下り中フラグ
@@ -136,6 +136,15 @@ public class PlayerController : MonoBehaviour
         //攻撃
         Fire();
 
+        if (moveX > 0)
+        {
+            modelTransform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        else if (moveX < 0)
+        {
+            modelTransform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        
         //アニメーション更新
         //UpdateAnimation();
     }
