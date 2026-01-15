@@ -461,9 +461,12 @@ public class PlayerController : MonoBehaviour
         //王冠
         else if (other.gameObject.name=="Crown")
         {
+            GameObject.Find("GameDirector").GetComponent<GameDirector>().NoKing();
+
             //王冠をプレイヤーの子にする
             other.transform.parent = transform;
             other.transform.localPosition = new Vector3(0, 1.0f, 0);
+            isKing = false;
             isKing = true;
             walkSpeed = 10f;
 

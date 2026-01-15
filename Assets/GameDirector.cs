@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 //using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 /// <summary>
 /// ゲーム全体の処理（リザルトシーンに行っても消えない）
@@ -58,6 +59,14 @@ public class GameDirector : MonoBehaviour
             Destroy(players[i]);
             Phaikei.gameObject.SetActive(false);
             PGauge.gameObject.SetActive(false);
+
+            List<GameObject> list = new List<GameObject>(players);
+
+            // 一番最後を削除
+            list.RemoveAt(list.Count - 1);
+
+            players = list.ToArray();
+
         }
         // ★ Destroy後に正しい人数を入れる
         plaerCount = count;
@@ -199,5 +208,23 @@ void DestroyPlayers()
 
         plaerCount = GameObject.FindGameObjectsWithTag("Player").Length;
     }*/
+
+
+
+
+    public void NoKing()
+    {
+        Debug.Log(players.Length);
+        for (int i = 0; i < players.Length; i++)
+        {
+            Debug.Log(i);
+            PlayerController pc = players[i].GetComponent<PlayerController>();
+            Debug.Log(pc);
+            if (pc != null)
+            {
+                pc.isKing = false;
+            }
+        }
+    }
 }
 
