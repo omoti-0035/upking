@@ -6,28 +6,41 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
+
 /// <summary>
 /// ゲーム全体の処理（リザルトシーンに行っても消えない）
 /// </summary>
 public class GameDirector : MonoBehaviour
 {
     //残り時間（秒）
-    float timeLeft = 90f;
+    float timeLeft = 10f;
+
 
     //生き残ってるプレイヤーの数
     int plaerCount = 0;
 
+
     //残り時間ＵＩ
     public TextMeshProUGUI timeText;
+
 
     //勝者ＩＤ
     public string winner = "";
 
+
     public GameObject king;
 
+
     public GameObject[] players; // シーンにいるプレイヤー（4人分）
-    public Image Phaikei;
-    public Image PGauge;
+
+
+    public GameObject Crown;
+//ゲームの停止処理
+    bool isGameEnd = false;
+//ドローフラグ
+    public bool isDraw = false;
+
+
 
 
     /// <summary>
@@ -41,6 +54,8 @@ public class GameDirector : MonoBehaviour
     GameState state = GameState.TAKE;   //最初は王冠獲得ターン
 
 
+
+
     /// <summary>
     /// 最初
     /// </summary>
@@ -48,15 +63,19 @@ public class GameDirector : MonoBehaviour
     {
         Debug.Log("GameDirector Start");
 
+
         //シーンが切り替わっても消えないように
         DontDestroyOnLoad(gameObject);
+
 
         Debug.Log("Line 54 前");
         //プレイヤーの数をカウント
         plaerCount = GameObject.FindGameObjectsWithTag("Player").Length;
         Debug.Log("Line 54 後");
 
+
         int count = GameManager.Instance.playerCount;
+
 
         if (GameManager.Instance != null)
         {
@@ -68,29 +87,36 @@ public class GameDirector : MonoBehaviour
             count = players.Length; // とりあえず全員出す
         }
 
+
         for (int i = count; i < players.Length; i++)
         {
             Destroy(players[i]);
-            Phaikei.gameObject.SetActive(false);
-            PGauge.gameObject.SetActive(false);
+
 
             List<GameObject> list = new List<GameObject>(players);
+
 
             // 一番最後を削除
             list.RemoveAt(list.Count - 1);
 
+
             players = list.ToArray();
+
 
         }
         // ★ Destroy後に正しい人数を入れる
         plaerCount = count;
     }
 
+
     /// <summary>
     /// 毎フレーム
     /// </summary>
     void Update()
     {
+        if (isGameEnd) return;
+
+
         if (timeText != null)
         {
             //残り時間表示
@@ -99,30 +125,36 @@ public class GameDirector : MonoBehaviour
         //残り時間を減らす
         timeLeft -= Time.deltaTime;
 
+
         //残り時間が0
         if(timeLeft <= 0)
         {
+            isGameEnd = true;
             //王冠獲得シーンだったら
             if (state == GameState.TAKE)
             {
-                //王冠を消す
-                Destroy(GameObject.FindWithTag("Crown"));
+                //ゲームをドローに
+                Dorow();
             }
+
 
             //王様ターン
             else
             {
                 //王様を消す
                 //Destroy(king);
-                
+               
                 //プレイヤーを消す
                 DestroyPlayers();
+
 
                 //ゲーム終了へ
                 Invoke("ToResult", 0.5f);
             }
         }
     }
+
+
 
 
     /// <summary>
@@ -136,6 +168,8 @@ public class GameDirector : MonoBehaviour
     }
 
 
+
+
     /// <summary>
     /// ハシゴの受け渡し
     /// </summary>
@@ -146,11 +180,13 @@ public class GameDirector : MonoBehaviour
         //攻撃されたキャラからハシゴを減らす
         bool haveLadder = receiver.GetComponent<PlayerController>().LoseLadder();
 
+
         //攻撃されたキャラがハシゴを持っていたら
         if(haveLadder)
         {
             //タグが "Player" のオブジェクトをすべて取得
             GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
 
             //取得したリストをループで回してIDをチェック
             foreach (GameObject playerObj in players)
@@ -161,11 +197,14 @@ public class GameDirector : MonoBehaviour
                     // 条件に一致するオブジェクトを見つけた！
                     pc.GetComponent<PlayerController>().ObtainingLadder();
 
+
                     break; // 見つかったのでループを抜ける
                 }
             }
         }
     }
+
+
 
 
     /// <summary>
@@ -176,6 +215,7 @@ public class GameDirector : MonoBehaviour
         //人数減らす
         plaerCount--;
 
+
         //残り1人
         if(plaerCount <= 1)
         {
@@ -183,12 +223,15 @@ public class GameDirector : MonoBehaviour
         }
     }
 
+
     void ToResult()
     {
         winner = "";
 
+
         // "Player"タグがついた全オブジェクトを配列として取得
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
 
         // foreach文で一つずつ取り出して処理を行う
         foreach (GameObject player in players)
@@ -197,16 +240,31 @@ public class GameDirector : MonoBehaviour
         }
 
 
+
+
         //リザルトシーンへ
         SceneManager.LoadScene("ResultScene");
+    }
+    //ドローシーンへの移動と王冠消去
+        void Dorow()
+    {
+         Debug.Log("起動してるよ");
+                //王冠を消す
+                //Destroy(GameObject.FindWithTag("Crown"));
+                Destroy(Crown);
+                SceneManager.LoadScene("ResultScene");
+                isGameEnd = true;
+                isDraw = true;
     }
 void DestroyPlayers()
 {
     GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
+
     foreach (GameObject p in players)
     {
         PlayerController pc = p.GetComponent<PlayerController>();
+
 
         if (pc != null && pc.isKing == false)
         {
@@ -214,16 +272,6 @@ void DestroyPlayers()
         }
     }
 }
-   /* public void ResetGame()
-    {
-        timeLeft = 90f;
-        state = GameState.TAKE;
-        winner = "";
-
-        plaerCount = GameObject.FindGameObjectsWithTag("Player").Length;
-    }*/
-
-
 
 
     public void NoKing()
@@ -241,4 +289,8 @@ void DestroyPlayers()
         }
     }
 }
+
+
+
+
 
