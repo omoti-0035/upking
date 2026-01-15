@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     //以下は触らない
     private CharacterController controller;
     private Vector3 velocity;
+    private Transform modelTransform;
     private Animator animator;　// アニメーション
     private bool isGrounded;    //地面に振れてるかフラグ
     bool isClimbing = false;    //ハシゴ上り下り中フラグ
@@ -158,12 +159,15 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("IsGrounded", isGrounded);
         animator.SetBool("IsClimbing", isClimbing);
 
-        // 向き変更（モデル反転）
         if (moveX != 0)
         {
             direction = moveX > 0 ? 1 : -1;
-            transform.localScale = new Vector3(direction, 1, 1);
+
+            Vector3 scale = modelTransform.localScale;
+            scale.x = Mathf.Abs(scale.x) * direction;
+            modelTransform.localScale = scale;
         }
+
     }
 
     /// <summary>
