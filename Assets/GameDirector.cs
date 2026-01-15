@@ -46,13 +46,27 @@ public class GameDirector : MonoBehaviour
     /// </summary>
     void Start()
     {
+        Debug.Log("GameDirector Start");
+
         //シーンが切り替わっても消えないように
         DontDestroyOnLoad(gameObject);
 
+        Debug.Log("Line 54 前");
         //プレイヤーの数をカウント
         plaerCount = GameObject.FindGameObjectsWithTag("Player").Length;
+        Debug.Log("Line 54 後");
 
         int count = GameManager.Instance.playerCount;
+
+        if (GameManager.Instance != null)
+        {
+            count = GameManager.Instance.playerCount;
+        }
+        else
+        {
+            Debug.LogError("GameManager.Instance が null です");
+            count = players.Length; // とりあえず全員出す
+        }
 
         for (int i = count; i < players.Length; i++)
         {
