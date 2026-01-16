@@ -138,13 +138,14 @@ public class PlayerController : MonoBehaviour
 
         if (moveX > 0)
         {
-            modelTransform.rotation = Quaternion.Euler(0, 0, 0);
+            // 右移動：Y軸を90度回転して右を向く
+            modelTransform.rotation = Quaternion.Euler(0, 90, 0);
         }
         else if (moveX < 0)
         {
-            modelTransform.rotation = Quaternion.Euler(0, 180, 0);
+            // 左移動：Y軸を-90度回転して左を向く
+            modelTransform.rotation = Quaternion.Euler(0, -90, 0);
         }
-        
         //アニメーション更新
         //UpdateAnimation();
     }
