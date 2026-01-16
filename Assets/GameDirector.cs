@@ -13,7 +13,7 @@ using System.Collections.Generic;
 public class GameDirector : MonoBehaviour
 {
     //残り時間（秒）
-    float timeLeft = 10f;
+    float timeLeft = 90f;
 
 
     //生き残ってるプレイヤーの数
