@@ -482,6 +482,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_3
       objectReference: {fileID: 0}
+    - target: {fileID: 3147638007351979893, guid: 0dc2ceb199b1e38408b79ec5df334b6c, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ff222e5d1a2106d43b9307c306607949, type: 2}
     - target: {fileID: 4947024397200318632, guid: 0dc2ceb199b1e38408b79ec5df334b6c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.8
@@ -1911,6 +1915,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_2
       objectReference: {fileID: 0}
+    - target: {fileID: 3147638007351979893, guid: 0dc2ceb199b1e38408b79ec5df334b6c, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 14001d0ac537a7541a76bcc0f6cdaf6b, type: 2}
     - target: {fileID: 4947024397200318632, guid: 0dc2ceb199b1e38408b79ec5df334b6c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.8
@@ -3668,6 +3676,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_4
       objectReference: {fileID: 0}
+    - target: {fileID: 3147638007351979893, guid: 0dc2ceb199b1e38408b79ec5df334b6c, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c3c23b6c8eac12e42bc70e5c483fbbf5, type: 2}
     - target: {fileID: 4947024397200318632, guid: 0dc2ceb199b1e38408b79ec5df334b6c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.8
@@ -3996,6 +4008,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_1
       objectReference: {fileID: 0}
+    - target: {fileID: 3147638007351979893, guid: 0dc2ceb199b1e38408b79ec5df334b6c, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 168cabf109f70f84597e8a1eec9968e0, type: 2}
     - target: {fileID: 4947024397200318632, guid: 0dc2ceb199b1e38408b79ec5df334b6c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.8
